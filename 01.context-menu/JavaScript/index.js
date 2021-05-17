@@ -19,6 +19,26 @@ const $context = document.querySelectorAll('.context');
   elem.style.border = '1px solid lightgray';
 });
 
+// hide context menu
+[...$context].forEach(elem => {
+  if (!elem.classList.contains('.active')) elem.style.display = 'none';
+});
+
+// toggle close/open event
+const clickOpenButton = (openButton, childContext) => {
+  openButton.addEventListener('click', () => {
+    openButton.classList.toggle('open');
+
+    openButton.classList.contains('open')
+      ? (openButton.textContent = 'close')
+      : (openButton.textContent = 'open');
+
+    openButton.classList.contains('open')
+      ? (childContext.style.display = 'block')
+      : (childContext.style.display = 'none');
+  });
+};
+
 [...$item].forEach(elem => {
   const $openButton = document.createElement('button');
   $openButton.textContent = 'open';
