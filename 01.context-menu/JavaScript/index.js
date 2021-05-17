@@ -18,3 +18,18 @@ const $context = document.querySelectorAll('.context');
   elem.style.padding = '5px';
   elem.style.border = '1px solid lightgray';
 });
+
+[...$item].forEach(elem => {
+  const $openButton = document.createElement('button');
+  $openButton.textContent = 'open';
+
+  elem.addEventListener('mouseenter', () => {
+    elem.appendChild($openButton);
+    const $childContext = elem.childNodes[1];
+    clickOpenButton($openButton, $childContext);
+  });
+
+  elem.addEventListener('mouseleave', () => {
+    elem.removeChild($openButton);
+  });
+});
