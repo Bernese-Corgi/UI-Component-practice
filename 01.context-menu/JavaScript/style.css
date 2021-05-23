@@ -1,0 +1,50 @@
+.wrapper {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+}
+
+.item {
+  position: relative;
+  border-bottom: 1px solid lightgray;
+  margin: 0;
+  padding: 10px;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+.item:hover {
+  background-color: #eeeeee;
+}
+
+.item > button {
+  position: absolute;
+  top: calc(50% - 12px);
+  right: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 8px;
+  background-color: #fff;
+}
+
+.item > button:hover {
+  cursor: pointer;
+  background-color: teal;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+.context {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  top: calc(100% - 10px);
+  right: 10px;
+  width: 60%;
+  padding: 10px;
+  z-index: 1;
+}
