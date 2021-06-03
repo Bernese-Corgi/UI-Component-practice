@@ -8,6 +8,13 @@ const $item = document.querySelectorAll('.item');
 // toggle close/open event
 const clickOpenButton = (openButton, childContext) => {
   openButton.addEventListener('click', () => {
+    // [...$item].forEach(elem => {
+    //   const isOpen = elem.childNodes[3]
+    //     ? elem.childNodes[3].classList.contains('open')
+    //     : null;
+    //   isOpen ? elem.childNodes[3].classList.remove('open') : null;
+    // });
+
     openButton.classList.toggle('open');
 
     openButton.classList.contains('open')
