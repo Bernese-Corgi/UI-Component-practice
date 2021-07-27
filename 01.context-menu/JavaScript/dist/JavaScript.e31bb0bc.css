@@ -1,0 +1,62 @@
+.wrapper {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+}
+
+.item {
+  position: relative;
+  border-bottom: 1px solid lightgray;
+  margin: 0;
+  padding: 10px;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+.item:hover {
+  background-color: #eeeeee;
+}
+
+.item:after {
+  position: absolute;
+  top: calc(50% - 12px);
+  right: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 8px;
+  background-color: #fff;
+}
+
+/* 실제로는 버튼이 있는 것이 아닌데, open, close 컨텐트만 보이게끔 함 */
+/* 마우스가 오버됐을 때 open 컨텐트 들어감 */
+.item:hover:after {
+  content: 'open';
+  cursor: pointer;
+  background-color: teal;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+/* open 클래스가 있을 때 close라는 컨텐트가 들어간다. */
+.item.open:after {
+  content: 'close';
+}
+
+.context {
+  /* context 클래스에는 현재 display none, 어떤 특정 조건(open 클래스)이 갖춰진 경우 block으로 변경 */
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  top: calc(100% - 10px);
+  right: 10px;
+  width: 60%;
+  padding: 10px;
+  z-index: 1;
+}
+
+
+/*# sourceMappingURL=/JavaScript.e31bb0bc.css.map */
