@@ -201,7 +201,9 @@ const items = document.querySelectorAll('.item'); // 2. 기존에 item에 등록
 
 wrapper.addEventListener('click', function (e) {
   // e.target : 현재 클릭한 대상
-  const targetElem = e.target; // 현재 클릭한 대상의 classList에 item 클래스가 없으면 아무 동작도 하지 않는다.
+  const targetElem = e.target; // 이벤트 확산 방지 (버블링 방지)
+
+  e.stopPropagation(); // 현재 클릭한 대상의 classList에 item 클래스가 없으면 아무 동작도 하지 않는다.
   // = 현재 클릭한 대상이 item이 아니면 아무 동작도 하지 않는다.
 
   if (!targetElem.classList.contains('item')) return; // if문 아래에서는 item 클래스를 가진 targetElem에 대해서만 동작된다.
