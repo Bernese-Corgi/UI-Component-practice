@@ -58,5 +58,10 @@
   z-index: 1;
 }
 
+/* item에 open 클래스가 있으면 context의 diplay가 block으로 변경 */
+.item.open .context {
+  display: block;
+}
+
 
 /*# sourceMappingURL=/JavaScript.e31bb0bc.css.map */
