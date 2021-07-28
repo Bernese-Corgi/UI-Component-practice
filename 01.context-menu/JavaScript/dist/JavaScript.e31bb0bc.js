@@ -213,7 +213,21 @@ wrapper.addEventListener('click', function (e) {
     // 엘리먼트가 targetElem과 같지 않으면 open 클래스를 지운다.
     if (elem !== targetElem) elem.classList.remove('open');
   });
-});
+}); // 3. 목록 외부를 클릭하면 사라지는 동작
+// document에 있는 body에 직접 리스너를 등록한다.
+
+document.body.addEventListener('click', function (e) {
+  // e.target의 classList가 context를 가지고 있다면 아무일도 하지 않는다. (context가 열려있는 상태면 동작하지 않는다.)
+  if (e.target.classList.contains('context')) return; // context가 열려있는 상태 외의 item
+
+  items.forEach(function (elem) {
+    // 목록 이외에 모든 부분을 어떤 부분을 선택하면 item에 있는 open 클래스를 전부 지워준다.
+    elem.classList.remove('open');
+  });
+}); // 이 코드를 추가하면 context가 열리지 않는 것처럼 보인다.
+// open이 안 되는 게 아니라 open됐다가 close가 바로 처리가 되는 것이다.
+// item -> wrapper -> body 순으로 이벤트가 전파(버블링)되고, 이벤트는 wrapper, body 에서 각각 발생해서 총 2번 이벤트가 발생하게 된다.
+// wrapper의 버블링을 더 이상 일어나지 않게 막아야한다.
 },{"./style.css":"style.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
