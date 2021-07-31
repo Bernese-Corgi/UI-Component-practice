@@ -59,7 +59,10 @@ details[open] summary:after {
   content: 'close';
 }
 
-/* do something here */
+/* details 태그에 open 어트리뷰트가 있으면 하위요소 p 태그의 display 값을 block 처리 */
+details[open] p {
+  display: block;
+}
 
 
 /*# sourceMappingURL=/html-js.e31bb0bc.css.map */
