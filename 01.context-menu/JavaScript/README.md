@@ -11,6 +11,9 @@
 
 ## CSS 코드 살펴보기
 
+[HTML 전체 코드 보기 🔗](/01.context-menu/JavaScript/index.html)
+[CSS 전체 코드 보기 🔗](/01.context-menu/html-js/style.css)
+
 실제로는 버튼이 있는 것이 아닌데, open, close 컨텐트만 보이게끔 함
 
 - 마우스가 오버됐을 때 open 컨텐트 들어감
