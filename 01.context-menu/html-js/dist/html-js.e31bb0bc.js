@@ -193,6 +193,24 @@ module.hot.accept(reloadCSS);
 "use strict";
 
 require("./style.css");
+
+// Import stylesheets
+// details 태그를 변수 items에 담는다.
+const items = document.querySelectorAll('details'); // body에 클릭 이벤트
+
+document.body.addEventListener('click', function (e) {
+  if (e.target.nodeName !== 'P' && e.target.nodeName !== 'SUMMARY') {
+    items.forEach(function (item) {
+      item.removeAttribute('open');
+    });
+  }
+
+  items.forEach(function (item) {
+    if (item !== e.target.parentElement) {
+      item.removeAttribute('open');
+    }
+  });
+});
 },{"./style.css":"style.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -221,7 +239,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54299" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60968" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
