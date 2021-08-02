@@ -1,8 +1,15 @@
 # HTML detail 태그를 이용한 context menu
 
-## html 코드 보기
+- [HTML detail 태그를 이용한 context menu](#html-detail-태그를-이용한-context-menu)
+  - [HTML, CSS 코드 보기](#html-css-코드-보기)
+  - [JavaScript 코드 작성](#javascript-코드-작성)
+  - [details 태그를 활용한 context menu의 장점](#details-태그를-활용한-context-menu의-장점)
 
-[전체 코드 보기 🔗](/01.context-menu/html-js/index.html)
+
+## HTML, CSS 코드 보기
+
+[HTML 전체 코드 보기 🔗](/01.context-menu/html-js/index.html)
+[CSS 전체 코드 보기 🔗](/01.context-menu/html-js/style.css)
 
 1. **`details` 태그를 이용해서 내부에 p 태그에 컨텍스트 메뉴를 작성한다.**
   
@@ -70,23 +77,10 @@
     html과 css만으로도 클릭했을때 context가 보이는 동작이 가능하므로, 자바스크립트에서 클릭 이벤트에 대해서 작성할 필요가 없다.
 
 
-이거랑 마찬가지로 `details`에 있는 `open`이라는 게 있어.
-때 p. 태그는
-display를 block으로 바꿔주면 되겠죠.
-그것만으로 일단 클릭에 대한 동작이 될 겁니다.
-그렇죠 딴 데를 클릭해도 일단 들고 있을까 이거는 에스터 클래스일 뿐이니까 의미가 없고요.
-이것만 마커를 지워놓고 보면. 원하는 스타일이 나오게 되겠죠 일단 이것에 대해서 그러니까 
 
-클릭 이벤트에서 아이템에 대해서는 관여할 필요가 없게 되고(html과 css에서 ), 딴 데를 클릭했을 때 다른 아이템을 클릭했을 때 기존에 있던 거에서 `open` 어트리뷰트를 지워주기만 하면 되는 거죠.
-그걸 한번 작성을 해볼게요
+## JavaScript 코드 작성
 
-일단 아까는 `items`라고 잡았던 거를 얼루 `details`를 잡을게요 그 상태에서
-바디의 이벤트를 갈게요 파티 이벤트를 거는데.
-만약에. 엘레 e.target의 노드 네임이 이번에는 클래스를 부여하지 않고서
-그냥 태그만 가지고 했기 때문에 `summary`가 아닐 경우에는 아무 동작도 하지 말아라.
-그러면 이 하위에서는 `summary`에 해당할 때에만 동작을 주는 거겠죠.
-이 상태에서 `items`에 대해서 forEach를 걸어서 아이템이 e.target의 패런트 엘리먼트 랑 같지.
-
+[JavaScript 전체 코드 🔗](/01.context-menu/html-js/index.js)
 
 details 태그를 변수 items에 담는다.
 
@@ -132,3 +126,37 @@ document.body.addEventListener('click', function (e) {
   });
 });
 ```
+
+현재 문제는 p 태그를 클릭해도 지워지고 있다.
+
+![html-detail -04](https://user-images.githubusercontent.com/72931773/127822863-a9391792-5923-46a5-b81e-b87909faa8c0.gif)
+
+그러므로 `nodeName`이 `'P'`일 때도 걸러줘야 한다.
+
+```js
+document.body.addEventListener('click', function (e) {
+  // nodeName이 'P'와 'SUMMARY' 둘 다 아닐 때
+  if (e.target.nodeName !== 'P' && e.target.nodeName !== 'SUMMARY') {
+    // items 돌면서 
+    items.forEach(function (item) {
+      item.removeAttribute('open');
+    });
+  }
+
+  items.forEach(function (item) {
+    if (item !== e.target.parentElement) {
+      item.removeAttribute('open');
+    }
+  });
+});
+```
+
+## details 태그를 활용한 context menu의 장점
+
+html에서 기본 제공하는 동작에 동작을 그대로 활용할 수 있기 때문에 좀 더 효율적인 작업이 된다.
+
+htmn에서 기본적으로 제공하는 동작이 자바스크립트에서 동작하는 동작을 개발자가 직접 구현할 때보다 더 성능도 좋을 것이고, 동작에 대한 신뢰도도 있다.
+
+자바스크립트가 제대로 동작하지 않는 상황에서도 원하는 바를 볼 수 있고,  CSS가 동작하지 않아도 details 태그의 기본 동작으로 context menu를 볼 수 있다.
+
+⇒ 자바스크립트나 css가 동작하지 않아도 일단 동작하기 때문에, 문제가 최소화될 수 있는 점에서 장점이다.
