@@ -139,6 +139,7 @@ document.body.addEventListener('click', function (e) {
   if (e.target.nodeName !== 'P' && e.target.nodeName !== 'SUMMARY') {
     // items 돌면서 
     items.forEach(function (item) {
+      // open 어트리뷰트 제거
       item.removeAttribute('open');
     });
   }
